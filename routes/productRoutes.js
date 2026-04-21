@@ -1,0 +1,27 @@
+// 載入 express
+const express = require('express');
+
+// 建立 router
+const router = express.Router();
+
+// 載入 controller
+const {
+  getAllProducts,
+  createProduct,
+  syncMoaProducts
+} = require('../controllers/productController');
+
+// GET /api/products
+// 查詢本地 MySQL 所有產品資料
+router.get('/', getAllProducts);
+
+// POST /api/products
+// 手動新增一筆資料到 MySQL
+router.post('/', createProduct);
+
+// POST /api/products/sync-moa
+// 抓農業部 API 資料並同步到 MySQL
+router.post('/sync-moa', syncMoaProducts);
+
+// 匯出 router
+module.exports = router;
