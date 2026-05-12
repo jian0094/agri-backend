@@ -20,8 +20,10 @@ require('dotenv').config();
 // ==========================
 
 // 載入 products API 路由
-// ⚠️ 路徑一定要對（routes/productRoutes.js）
 const productRoutes = require('./routes/productRoutes');
+
+// 載入 blockchain API 路由
+const blockchainRoutes = require('./routes/blockchainRoutes');
 
 
 // ==========================
@@ -65,7 +67,19 @@ app.use('/api/products', productRoutes);
 
 
 // ==========================
-// 7. 啟動伺服器
+// 7. 區塊鏈 API 路由
+// ==========================
+
+// 所有 /api/blockchain 的請求
+// 都交給 blockchainRoutes 處理
+//
+// 例如：
+// POST /api/blockchain/add
+app.use('/api/blockchain', blockchainRoutes);
+
+
+// ==========================
+// 8. 啟動伺服器
 // ==========================
 
 // 從 .env 讀 PORT，如果沒有就用 3001

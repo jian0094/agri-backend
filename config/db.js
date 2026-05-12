@@ -18,7 +18,8 @@ const db = mysql.createConnection({
   host: process.env.DB_HOST,         // 資料庫主機（通常是 localhost）
   user: process.env.DB_USER,         // 資料庫帳號（通常是 root）
   password: process.env.DB_PASSWORD, // 資料庫密碼（你自己設定的）
-  database: process.env.DB_NAME      // 要連的資料庫名稱（agri_supply_chain）
+  database: process.env.DB_NAME,      // 要連的資料庫名稱（agri_supply_chain）
+    charset: 'utf8mb4'
 });
 
 
